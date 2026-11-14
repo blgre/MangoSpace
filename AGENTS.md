@@ -19,7 +19,7 @@ Status: building. Plan: https://claude.ai/artifact/RnQvBADeQY7pRJLrBH8YR8
 | Shortcut | Stories, epics, iterations. The team's source of truth for who does what | MCP in `.mcp.json`. Each person signs in once through `/mcp` |
 | Playwright | Driving the app in a real browser for tests and proof | MCP in `.mcp.json`. Needs Node 18+ and Chrome |
 
-- Every task starts from a Shortcut story. Put the story ID in the branch name and PR title (`sc-123`), and have the agent read the story before it starts.
+- Every task starts from a Shortcut story. Put the story ID in the branch name (`sc-123-short-name`) and at the end of the PR title (`[sc-123]`), and have the agent read the story before it starts.
 - Proof screenshots and videos come from Playwright.
 
 ## Workflow: pstack
@@ -85,9 +85,37 @@ Upkeep:
 | Slow page | `/pstack:poteto-mode record a Playwright trace of the current state first`, fix, then `/pstack:swarm` repeated runs to confirm |
 | Demo for judges | Record a Playwright video of the main flow |
 
+## Commit messages
+
+Commit subjects and PR titles use Conventional Commits, with the Shortcut story ID at the end:
+
+```
+<type>: <summary> [sc-123]
+```
+
+| Type | For |
+| --- | --- |
+| `feat` | A new thing the user can see or do |
+| `fix` | A bug fix |
+| `refactor` | A code change with no change in behavior |
+| `perf` | A speed improvement |
+| `test` | Specs only |
+| `docs` | Documentation only |
+| `data` | Pipeline output in `app/public/data` |
+| `ci` | Workflows and build setup |
+| `chore` | Other upkeep: dependencies, config, cleanup |
+
+- The summary is in the imperative, lower case, with no period, 72 characters or less: `feat: add play button to the time slider [sc-84]`.
+- One type for each commit. If a commit needs two types, split it.
+- Leave out `[sc-123]` only for typos and one-line changes that have no story.
+- The body, if any, says why. The diff shows what.
+
 ## Pull requests
 
 The tech lead reviews every PR. To get a PR merged:
+
+- The title has the same format as a commit subject.
+- The description follows `.github/pull_request_template.md`. GitHub fills it in when you open a PR. With `gh pr create`, start the body from that file.
 
 - Small and single-purpose. One change per PR.
 - The description includes Playwright proof: screenshots, a video, or a test run. A PR that adds or changes a user flow includes its Playwright spec.
