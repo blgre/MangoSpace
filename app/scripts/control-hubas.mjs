@@ -24,7 +24,9 @@ const HELP = `control-hubas <command> [options]   (run from app/)
       --town <psgc|"Name, Prov">  Pick the town in the "Town" dropdown.
       --window <n>                Set the "Window" slider to index n (0 = first 12-day window).
       --name <label>              Evidence folder name (default: timestamp).
-      --viewport <WxH>            Browser size (default 1280x800).
+      --viewport <WxH>            Browser size (default 1280x800). 375x812 gives the phone layout.
+      --offline-basemap yes       Replace the OpenFreeMap base map with a plain background,
+                                  the same stub the e2e specs use. For runs without internet.
     Actions run in this order: click-town, town, window.
     Prints the panel, the slider and console errors. Saves screenshot.png, aria.yml, result.json.
   down                            Stop the server that "up" started. Evidence stays.
@@ -152,6 +154,15 @@ async function drive(o) {
   mkdirSync(dir, { recursive: true });
   const steps = [];
   try {
+    if (o["offline-basemap"] === "yes") {
+      await page.route("https://tiles.openfreemap.org/**", (route) => route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        headers: { "access-control-allow-origin": "*" },
+        body: JSON.stringify({ version: 8, sources: {}, layers: [{ id: "background", type: "background", paint: { "background-color": "#e7ece9" } }] }),
+      }));
+      steps.push("offline basemap");
+    }
     await page.goto(s.url);
     await page.locator(".map[data-ready=true] canvas").waitFor({ timeout: 20000 });
     await page.waitForFunction(() => window.hubasMap?.isSourceLoaded("lgus"), null, { timeout: 20000 });
@@ -203,13 +214,16 @@ async function drive(o) {
       url: s.url,
       steps,
       label: await text(page.locator(".tag")),
+      legend: await page.getByTestId("soil-water-legend").count()
+        ? (await page.getByTestId("soil-water-legend").innerText()).split("\n").map((t) => t.trim()).filter(Boolean)
+        : null,
       window: { index: Number(await page.getByLabel("Window").inputValue()), range: await text(page.locator(".slider output")) },
       town: (await page.getByLabel("Town").inputValue()) || null,
       panel,
       consoleErrors,
       evidence: dir,
     };
-    await page.screenshot({ path: path.join(dir, "screenshot.png") });
+    await page.screenshot({ path: path.join(dir, "screenshot.png"), fullPage: true }); // full page: on phones the panel and slider sit below the map
     writeFileSync(path.join(dir, "aria.yml"), await page.locator("body").ariaSnapshot());
     writeFileSync(path.join(dir, "result.json"), JSON.stringify(result, null, 2));
     out(result);
