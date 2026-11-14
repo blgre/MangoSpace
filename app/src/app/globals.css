@@ -3,8 +3,9 @@
   --ink: #12201d;
   --muted: #566763;
   --line: #d3dcd9;
-  --accent: #0d6f7d; /* water */
-  --dry: #b07a1f; /* dry soil */
+  --accent: #0d6f7d;
+  --dry: #b07a1f;
+  --no-data: #9aa5a2;
 }
 
 * { box-sizing: border-box; }
@@ -13,28 +14,70 @@ html, body { height: 100%; margin: 0; }
 
 body {
   color: var(--ink);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-main { position: relative; height: 100%; }
+main { position: relative; height: 100vh; height: 100dvh; min-height: 500px; }
 
 /* Not position: absolute. MapLibre sets position: relative on its container. */
 .map { height: 100%; }
 
-.tag, .slider, .panel {
+.tag, .slider, .panel, .legend {
   position: absolute;
+  z-index: 2;
   margin: 0;
   padding: 10px 12px;
-  background: var(--surface);
+  background: rgb(255 255 255 / 96%);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgb(18 32 29 / 10%);
 }
 
-.tag { top: 12px; left: 12px; font: 12px var(--font-geist-mono), monospace; }
+.tag {
+  top: 12px;
+  left: 12px;
+  font: 12px "Cascadia Code", Consolas, monospace;
+}
 
-.slider { left: 12px; right: 344px; bottom: 28px; display: grid; gap: 6px; }
+.legend {
+  left: 12px;
+  bottom: 104px;
+  width: 264px;
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.legend h2 { margin: 0; font-size: 13px; font-weight: 650; }
+
+.legend-ramp {
+  height: 12px;
+  border: 1px solid rgb(18 32 29 / 24%);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #b07a1f 0%, #c8c48a 43%, #0d6f7d 100%);
+}
+
+.legend-values {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font: 10px "Cascadia Code", Consolas, monospace;
+}
+
+.legend p { display: flex; align-items: center; gap: 6px; margin: 0; color: var(--muted); }
+
+.no-data-swatch {
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgb(18 32 29 / 28%);
+  border-radius: 3px;
+  background: var(--no-data);
+}
+
+.slider { left: 12px; right: 356px; bottom: 28px; display: grid; gap: 6px; }
+.slider label { display: flex; justify-content: space-between; gap: 12px; }
 .slider input { width: 100%; accent-color: var(--accent); }
-.slider output { font-family: var(--font-geist-mono), monospace; }
+.slider output { font-family: "Cascadia Code", Consolas, monospace; }
 
 .panel { top: 12px; right: 12px; width: 320px; display: grid; gap: 8px; }
 .panel select { font: inherit; padding: 6px; }
@@ -43,6 +86,28 @@ main { position: relative; height: 100%; }
 .panel dd { margin: 0; }
 
 @media (max-width: 640px) {
-  .panel { top: auto; left: 12px; bottom: 110px; width: auto; }
-  .slider { right: 12px; }
+  main {
+    display: grid;
+    grid-template-rows: minmax(360px, 56dvh) auto auto;
+    align-content: start;
+    height: auto;
+    min-height: 100dvh;
+  }
+
+  .map { grid-row: 1; height: 56dvh; min-height: 360px; }
+  .tag { font-size: 11px; }
+  .legend { top: 54px; bottom: auto; width: min(264px, calc(100% - 24px)); }
+
+  .panel {
+    position: static;
+    grid-row: 2;
+    width: auto;
+    margin: 12px 12px 0;
+  }
+
+  .slider {
+    position: static;
+    grid-row: 3;
+    margin: 8px 12px 12px;
+  }
 }

@@ -26,6 +26,23 @@ export default function Explorer({ manifest, lgus, outlooks }: { manifest: Manif
       style: "https://tiles.openfreemap.org/styles/positron",
       bounds: manifest.bounds,
     });
+    const fitRegion = () => {
+      const compact = window.matchMedia("(max-width: 640px)").matches;
+      m.fitBounds(manifest.bounds, {
+        padding: compact
+          ? { top: 164, right: 16, bottom: 16, left: 16 }
+          : { top: 84, right: 356, bottom: 188, left: 16 },
+        maxZoom: 8,
+        duration: 0,
+      });
+    };
+    const handleResize = () => {
+      window.requestAnimationFrame(() => {
+        if (!m.getContainer().isConnected) return;
+        m.resize();
+        fitRegion();
+      });
+    };
     m.on("load", () => {
       m.addSource(SOURCE, { type: "geojson", data: "/data/lgus.geojson", promoteId: "psgc" });
       m.addLayer({
@@ -44,10 +61,15 @@ export default function Explorer({ manifest, lgus, outlooks }: { manifest: Manif
         },
       });
       m.on("click", "soil", (e) => setPsgc(String(e.features?.[0]?.id ?? "")));
+      fitRegion();
       setMap(m);
     });
+    window.addEventListener("resize", handleResize);
     window.hubasMap = m; // the Playwright specs use this to find towns on the canvas
-    return () => m.remove();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      m.remove();
+    };
   }, [manifest.bounds]);
 
   useEffect(() => {
@@ -64,6 +86,16 @@ export default function Explorer({ manifest, lgus, outlooks }: { manifest: Manif
     <main>
       <div ref={container} className="map" data-ready={map ? "true" : "false"} />
       <p className="tag">Cebu + Bohol · 12-day window · {manifest.sme2Status}</p>
+
+      <section className="legend" aria-labelledby="legend-title" data-testid="soil-water-legend">
+        <h2 id="legend-title">Soil water</h2>
+        <div className="legend-ramp" aria-hidden="true" />
+        <div className="legend-values">
+          <span>0.10 m³/m³ · drier</span>
+          <span>0.45 m³/m³ · wetter</span>
+        </div>
+        <p><span className="no-data-swatch" aria-hidden="true" /> Gray: no good pixels</p>
+      </section>
 
       <form className="slider" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="window">

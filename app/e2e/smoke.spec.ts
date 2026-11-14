@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import type { Map as MapLibreMap } from "maplibre-gl";
+import { useOfflineBasemap } from "./offline-basemap";
 
 declare global {
   interface Window { hubasMap?: MapLibreMap }
@@ -19,6 +20,7 @@ test("map loads, slider and town panel work, no console errors", async ({ page }
   page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
   page.on("pageerror", (e) => errors.push(e.message));
 
+  await useOfflineBasemap(page);
   await page.goto("/");
   await expect(page.locator(".map[data-ready=true] canvas")).toBeVisible();
   expect((await page.locator(".map canvas").boundingBox())!.height).toBeGreaterThan(300);
