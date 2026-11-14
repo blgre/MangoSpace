@@ -75,3 +75,31 @@ Sources, each pinned to a release tag:
 
 References: [ASF collection names](https://nisar-docs.asf.alaska.edu/earthaccess/)
 and [earthaccess downloads](https://earthaccess.readthedocs.io/en/latest/user/howto/download-to-local-machine/).
+
+
+## Rice-field images and HV series
+
+```sh
+uv run python targets.py --target ubay-rice --target pilar-rice
+```
+
+Each target uses one track, orbit direction, and frame. The target registry in
+`targets.py` defines small sample paddy parcels, not town-wide rice areas. The command writes HH/HV PNG pairs and
+`meanHvDb` for each date, replacing only the selected entries' `bounds` and
+`nisar` fields. Running without `--target` still processes only Malinao Dam.
+
+Rice images use the same north-up, 8-bit grey scale as the dam images:
+0 = −30 dB and 255 = 0 dB. The Ubay sample uses 16 × 16 output pixels; Pilar uses 24 × 24.
+Resampling these geographic grids does not improve the native 10 m radar
+resolution. The HV statistic is the arithmetic mean of finite, unclipped reprojected
+dB values, before PNG conversion. It is not the dB value of mean power. Both HH
+and HV need at least 99% finite coverage. A rice series needs at least two dates;
+duplicate dates stop the run rather than choosing a processing version silently.
+Images are staged until every selected target passes these checks.
+
+Low HV followed by rising HV is consistent with flooded fields and plant growth.
+It does not establish a planting date or crop stage without field observations.
+The sample windows include field bunds and can contain other vegetation.
+Optical reference imagery locates field parcels; it is not 2026 crop ground truth. The `rainMm`, `history`,
+and `scenarios` fields are left unchanged; remaining mock context is not measured
+rice data. This command does not change the app's data contract.
