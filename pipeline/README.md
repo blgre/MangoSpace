@@ -30,5 +30,24 @@ The verification command compares the local count and byte total with the saved
 summary and opens each HDF5 science group. It does not validate soil-water values
 or quality flags; sc-48 covers those.
 
+## Malinao Dam images and water area
+
+```sh
+uv run python targets.py
+```
+
+The command finds the `NISAR_L2_GCOV_PROVISIONAL_V1` granules on track 003 that
+cover the dam, for the manifest's dates. It reads only the dam window from each
+remote file, so it does not download the 5 GB granules. It writes one HH and one
+HV image for each date into `app/public/data/targets/` and replaces the `bounds`
+and `nisar` fields of the `malinao-dam` entry in `targets.json`. It does not
+change the other fields or the other targets.
+
+The water area is the count of HH pixels below −10 dB inside the outline of the
+reservoir, after a 5 × 5 pixel mean that removes speckle. The outline comes from
+the median of all dates. The comments in `targets.py` say how the limits were
+selected and what the count leaves out. The command needs the same Earthdata
+Login as the download.
+
 References: [ASF collection names](https://nisar-docs.asf.alaska.edu/earthaccess/)
 and [earthaccess downloads](https://earthaccess.readthedocs.io/en/latest/user/howto/download-to-local-machine/).
