@@ -40,7 +40,7 @@ From the plan (https://claude.ai/artifact/RnQvBADeQY7pRJLrBH8YR8). Add a feature
 
 - Rank colors on the map (wave 2)
 - Malinao Dam view: radar image per date, water area chart, possible causes (wave 1). The data is in `public/data/targets.json` and `public/data/targets/` (real NISAR, 9 dates), but no screen shows it yet.
-- Rice fields at Ubay and Pilar (wave 2)
+- Rice-field views at Ubay and Pilar (wave 2). Real same-track images and HV series for two selected paddy parcels are in `public/data/targets.json` and `public/data/targets/`; no screen shows them yet. The dates of planting and growth are not ground-verified.
 - Radar explainer: click a pixel for HH and HV (wave 2)
 - Sound (wave 2)
 - Then and now, "if it repeats" lines, L-band vs C-band, RADARSAT-1 (wave 3)
