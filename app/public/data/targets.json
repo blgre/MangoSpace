@@ -11,76 +11,64 @@
   "nisar": {
    "track": 3,
    "dates": [
-    "2026-06-21",
-    "2026-07-03",
-    "2026-07-15",
-    "2026-07-27",
-    "2026-08-08",
-    "2026-08-20",
-    "2026-09-01",
-    "2026-09-13",
-    "2026-09-25",
-    "2026-10-07",
-    "2026-10-19"
+    "2026-06-26",
+    "2026-07-08",
+    "2026-07-20",
+    "2026-08-13",
+    "2026-08-25",
+    "2026-09-06",
+    "2026-09-18",
+    "2026-09-30",
+    "2026-10-12"
    ],
    "images": [
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/malinao-dam-2026-06-26-hh.png",
+     "hv": "targets/malinao-dam-2026-06-26-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/malinao-dam-2026-07-08-hh.png",
+     "hv": "targets/malinao-dam-2026-07-08-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/malinao-dam-2026-07-20-hh.png",
+     "hv": "targets/malinao-dam-2026-07-20-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/malinao-dam-2026-08-13-hh.png",
+     "hv": "targets/malinao-dam-2026-08-13-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/malinao-dam-2026-08-25-hh.png",
+     "hv": "targets/malinao-dam-2026-08-25-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/malinao-dam-2026-09-06-hh.png",
+     "hv": "targets/malinao-dam-2026-09-06-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/malinao-dam-2026-09-18-hh.png",
+     "hv": "targets/malinao-dam-2026-09-18-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/malinao-dam-2026-09-30-hh.png",
+     "hv": "targets/malinao-dam-2026-09-30-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
-    },
-    {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
-    },
-    {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/malinao-dam-2026-10-12-hh.png",
+     "hv": "targets/malinao-dam-2026-10-12-hv.png"
     }
    ],
    "waterAreaKm2": [
-    1.4,
-    1.36,
-    1.33,
-    1.29,
-    1.26,
-    1.22,
-    1.19,
-    1.15,
-    1.12,
-    1.08,
-    1.05
+    0.809,
+    0.786,
+    0.8,
+    0.809,
+    0.795,
+    0.807,
+    0.758,
+    0.776,
+    0.78
    ]
   },
   "rainMm": [
