@@ -24,7 +24,7 @@ Preconditions:
 - **Load.** Open the app. Run `node scripts/control-hubas.mjs drive --name map-load`. `steps` contains `map ready`, `consoleErrors` is empty, `label` is `Cebu + Bohol · 12-day window · provisional`, and `legend` is `["Soil water", "0.10 m³/m³ · drier", "0.45 m³/m³ · wetter", "Gray: no good pixels"]`.
 - **See the towns.** Open `screenshot.png` in the evidence folder. Every town from `towns` is visible as a filled shape inside Cebu or Bohol, and no overlay covers either island.
 - **Phone layout.** Run `node scripts/control-hubas.mjs drive --viewport 375x812 --name map-phone`. The full-page `screenshot.png` shows the map on top, then the panel, then the slider.
-- **Grey towns.** Run `node scripts/control-hubas.mjs drive --window 4 --name map-w4`. In the mock data, Cebu City has no soil water in window 4 and shows grey.
+- **Grey towns.** Run `node scripts/control-hubas.mjs drive --window 4 --name map-w4`. A town with `null` at index 4 of `soilMoisture` in `lgus.json` shows grey. Until sc-71 writes the soil water, every town is grey in every window.
 - **Colors follow data.** Run `node scripts/control-hubas.mjs drive --window 0 --name map-w0` and `node scripts/control-hubas.mjs drive --window 10 --name map-w10`. Compare the two screenshots: towns whose `soilMoisture` changes between index 0 and 10 in `public/data/lgus.json` change color.
 
 ## Gotchas

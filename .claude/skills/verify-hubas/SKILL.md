@@ -48,7 +48,7 @@ Run it first, and again whenever something looks wrong. It is read-only. It chec
 
 ```
 node scripts/control-hubas.mjs towns
-node scripts/control-hubas.mjs drive --click-town mock-bogo-city --window 10 --name sc-123-bogo
+node scripts/control-hubas.mjs drive --click-town 0702211000 --window 10 --name sc-123-bogo
 node scripts/control-hubas.mjs drive --town "Carmen, Bohol" --name sc-123-carmen
 ```
 
@@ -95,5 +95,5 @@ node scripts/control-hubas.mjs down
 
 ## Known limits
 
-- The town data is still mock data (`psgc` values start with `mock-`). Town IDs and counts change when the pipeline replaces it: use `towns` instead of hard-coded IDs. The Malinao Dam data in `targets.json` is already real.
+- The 101 towns are real, but their soil water and rank are empty until sc-71 and sc-120: every town is grey and `Not ranked`. `outlook.json` and the windows in `manifest.json` are still mock data. Get town IDs with `towns`. The Malinao Dam data in `targets.json` is already real.
 - Features from the plan that are not built yet (dam view, rice, explainer, sound, rank colors) are listed in the feature map as "not built". Update the map when they land, or run `/pstack:maintain-verification-skill`.

@@ -1,6 +1,7 @@
 import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 import type { Map as MapLibreMap } from "maplibre-gl";
+import type { Lgu } from "../lib/data";
 import { useOfflineBasemap } from "./offline-basemap";
 
 declare global {
@@ -46,7 +47,13 @@ async function expectIslandsVisible(page: Page) {
   }
 }
 
-test("soil water legend and map framing work at desktop and mobile widths", async ({ page }) => {
+test("soil water legend and map framing work at desktop and mobile widths", async ({ page, request }) => {
+  const lgus: Lgu[] = await (await request.get("/data/lgus.json")).json();
+  const bogo = lgus.find((l) => l.name === "City of Bogo")!;
+  const cebuCity = lgus.find((l) => l.name === "City of Cebu")!;
+  // The map state of a town is its soil water in lgus.json for the window, null included.
+  const mapShows = (lgu: Lgu, i: number) =>
+    page.waitForFunction(([id, sm]) => window.hubasMap?.getFeatureState({ source: "lgus", id }).sm === sm, [lgu.psgc, lgu.soilMoisture[i]] as const);
   const errors: string[] = [];
   page.on("console", (message) => message.type() === "error" && errors.push(message.text()));
   page.on("pageerror", (error) => errors.push(error.message));
@@ -55,14 +62,9 @@ test("soil water legend and map framing work at desktop and mobile widths", asyn
   await page.goto("/");
   await expect(page.locator(".map[data-ready=true] canvas")).toBeVisible();
   await page.waitForFunction(() => window.hubasMap?.isSourceLoaded("lgus"));
-  await page.waitForFunction(() => window.hubasMap?.getFeatureState({ source: "lgus", id: "mock-bogo-city" }).sm === 0.34);
+  await mapShows(bogo, 0);
 
-  const mapState = await page.evaluate(() => ({
-    fillColor: window.hubasMap!.getPaintProperty("soil", "fill-color"),
-    bogoMoisture: window.hubasMap!.getFeatureState({ source: "lgus", id: "mock-bogo-city" }).sm,
-  }));
-  const colorExpression = JSON.stringify(mapState.fillColor);
-  expect(mapState.bogoMoisture).toBe(0.34);
+  const colorExpression = JSON.stringify(await page.evaluate(() => window.hubasMap!.getPaintProperty("soil", "fill-color")));
   expect(colorExpression).toContain("#9aa5a2");
   expect(colorExpression).toContain("#b07a1f");
   expect(colorExpression).toContain("#c8c48a");
@@ -73,7 +75,7 @@ test("soil water legend and map framing work at desktop and mobile widths", asyn
   await expect(page.getByText("provisional")).toBeVisible();
 
   await page.getByLabel("Window").fill("4");
-  await page.waitForFunction(() => window.hubasMap?.getFeatureState({ source: "lgus", id: "mock-cebu-city" }).sm === null);
+  await mapShows(cebuCity, 4);
   await page.getByLabel("Window").fill("0");
 
   await expectIslandsVisible(page);
