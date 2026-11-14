@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "playwright test"
+    "test": "playwright test",
+    "control": "node scripts/control-hubas.mjs"
   },
   "dependencies": {
     "maplibre-gl": "^6.18.0",
