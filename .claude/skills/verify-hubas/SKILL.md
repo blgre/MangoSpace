@@ -5,7 +5,7 @@ description: Launch, check and drive the Hubas web app (app/, Next.js static exp
 
 # Verify Hubas
 
-Hubas is one page: a MapLibre map of Cebu and Bohol, a "Window" time slider, and a town panel. All data comes from static files in `app/public/data`. There is no server code and no login.
+Hubas is one page: a MapLibre map of Cebu and Bohol with a soil water legend, a "Window" time slider, and a town panel. On a phone (640 px wide or less) the panel and slider sit below the map. All data comes from static files in `app/public/data`. There is no server code and no login.
 
 The control tool is `app/scripts/control-hubas.mjs`. Run every command from `app/`. Each command prints JSON. Read `ok` first; on `false`, follow `hint`.
 
@@ -42,7 +42,7 @@ Run it first, and again whenever something looks wrong. It is read-only. It chec
 - `page`: `/` answers 200 and contains "Hubas".
 - `data`: the manifest says region `PH-07`; it prints the window count and `generatedAt`.
 - `build-fresh`: `out/` is newer than `src/`, `lib/` and `public/`. If not, you are driving old code: run `down`, then `up`.
-- `basemap`: the OpenFreeMap style answers. It is an outside service; without it the map can fail to load. Report it; do not work around it.
+- `basemap`: the OpenFreeMap style answers. It is an outside service; without it the map can fail to load. Report it. To keep verifying the app itself, use `drive --offline-basemap yes`.
 
 ## Drive
 
@@ -60,7 +60,9 @@ node scripts/control-hubas.mjs drive --town "Carmen, Bohol" --name sc-123-carmen
 | `--town <psgc or "Name, Province">` | Pick the town in the dropdown | label `Town` |
 | `--window <n>` | Move the slider to window n | label `Window`; range text in `.slider output` |
 
-It prints `steps`, the map label, the slider value and range, the selected town, every row of the town panel (`Rank`, `Soil water`, `Good pixels`, `PAGASA, <province>`), and all console errors. `ok` is `false` if any console error happened.
+Two more options: `--viewport 375x812` gives the phone layout, and `--offline-basemap yes` replaces the outside base map with a plain background (the same stub as `app/e2e/offline-basemap.ts`) for runs without internet.
+
+It prints `steps`, the map label, the legend lines, the slider value and range, the selected town, every row of the town panel (`Rank`, `Soil water`, `Good pixels`, `PAGASA, <province>`), and all console errors. `ok` is `false` if any console error happened.
 
 For something `drive` does not cover yet, use the Playwright MCP against the URL from `up`, with the same handles. If you drive the same steps by hand twice, add them to `control-hubas.mjs` instead.
 
@@ -68,7 +70,7 @@ For something `drive` does not cover yet, use the Playwright MCP against the URL
 
 Each `drive` writes to `app/.verify/evidence/<name>/`:
 
-- `screenshot.png`: the page after the actions, with the app label visible.
+- `screenshot.png`: the full page after the actions, with the app label visible. On a phone viewport it is taller than the screen, so it includes the panel and slider.
 - `aria.yml`: the ARIA snapshot of the page.
 - `result.json`: the same JSON the command printed.
 - `failure.png`: only when a step failed.
@@ -93,5 +95,5 @@ node scripts/control-hubas.mjs down
 
 ## Known limits
 
-- The data is mock data until the pipeline lands (`psgc` values start with `mock-`). Town IDs and counts change then: use `towns` instead of hard-coded IDs.
+- The town data is still mock data (`psgc` values start with `mock-`). Town IDs and counts change when the pipeline replaces it: use `towns` instead of hard-coded IDs. The Malinao Dam data in `targets.json` is already real.
 - Features from the plan that are not built yet (dam view, rice, explainer, sound, rank colors) are listed in the feature map as "not built". Update the map when they land, or run `/pstack:maintain-verification-skill`.

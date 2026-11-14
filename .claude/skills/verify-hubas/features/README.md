@@ -7,7 +7,7 @@ This directory is the maintained source for verifying what a Hubas user can see 
 - Run all commands from `app/`.
 - Start the app with `node scripts/control-hubas.mjs up`. It serves the static export at `http://127.0.0.1:4310`.
 - Run `node scripts/control-hubas.mjs doctor` and require `ok: true`.
-- The data is the mock data in `public/data` until the pipeline replaces it. Get current town IDs with `node scripts/control-hubas.mjs towns`.
+- The town data (`lgus.json`, `lgus.geojson`, `outlook.json`) is still mock data; town IDs start with `mock-`. The Malinao Dam data in `targets.json` is real NISAR data. Get current town IDs with `node scripts/control-hubas.mjs towns`.
 - Never drive a server that this run did not start.
 
 ## Driving conventions
@@ -30,7 +30,7 @@ Each feature file starts with an H1 title and one paragraph on the user-visible 
 
 ## Features
 
-- [Soil water map](./soil-water-map.md): the map of Cebu and Bohol, town shapes colored by soil water, and the "provisional" label.
+- [Soil water map](./soil-water-map.md): the map of Cebu and Bohol, town shapes colored by soil water, the "provisional" label, the legend, and the desktop and phone layouts.
 - [Time slider](./time-slider.md): moving through the 12-day windows and the map and panel following.
 - [Town panel](./town-panel.md): opening a town from the map or the dropdown and reading its rank, soil water, good pixels and PAGASA outlook.
 
@@ -39,7 +39,7 @@ Each feature file starts with an H1 title and one paragraph on the user-visible 
 From the plan (https://claude.ai/artifact/RnQvBADeQY7pRJLrBH8YR8). Add a feature file when each one lands.
 
 - Rank colors on the map (wave 2)
-- Malinao Dam view: radar image per date, water area chart, possible causes (wave 1)
+- Malinao Dam view: radar image per date, water area chart, possible causes (wave 1). The data is in `public/data/targets.json` and `public/data/targets/` (real NISAR, 9 dates), but no screen shows it yet.
 - Rice fields at Ubay and Pilar (wave 2)
 - Radar explainer: click a pixel for HH and HV (wave 2)
 - Sound (wave 2)
