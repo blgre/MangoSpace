@@ -126,84 +126,72 @@
   "id": "ubay-rice",
   "kind": "rice",
   "bounds": [
-   124.44,
-   10.030000000000001,
-   124.5,
-   10.09
+   124.4345,
+   10.0152,
+   124.4355,
+   10.0166
   ],
   "nisar": {
-   "track": 39,
+   "track": 3,
    "dates": [
-    "2026-06-21",
-    "2026-07-03",
-    "2026-07-15",
-    "2026-07-27",
-    "2026-08-08",
-    "2026-08-20",
-    "2026-09-01",
-    "2026-09-13",
-    "2026-09-25",
-    "2026-10-07",
-    "2026-10-19"
+    "2026-06-26",
+    "2026-07-08",
+    "2026-07-20",
+    "2026-08-13",
+    "2026-08-25",
+    "2026-09-06",
+    "2026-09-18",
+    "2026-09-30",
+    "2026-10-12"
    ],
    "images": [
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/ubay-rice-2026-06-26-hh.png",
+     "hv": "targets/ubay-rice-2026-06-26-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/ubay-rice-2026-07-08-hh.png",
+     "hv": "targets/ubay-rice-2026-07-08-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/ubay-rice-2026-07-20-hh.png",
+     "hv": "targets/ubay-rice-2026-07-20-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/ubay-rice-2026-08-13-hh.png",
+     "hv": "targets/ubay-rice-2026-08-13-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/ubay-rice-2026-08-25-hh.png",
+     "hv": "targets/ubay-rice-2026-08-25-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/ubay-rice-2026-09-06-hh.png",
+     "hv": "targets/ubay-rice-2026-09-06-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/ubay-rice-2026-09-18-hh.png",
+     "hv": "targets/ubay-rice-2026-09-18-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/ubay-rice-2026-09-30-hh.png",
+     "hv": "targets/ubay-rice-2026-09-30-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
-    },
-    {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
-    },
-    {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/ubay-rice-2026-10-12-hh.png",
+     "hv": "targets/ubay-rice-2026-10-12-hv.png"
     }
    ],
    "meanHvDb": [
-    -21,
-    -18.8,
-    -16.9,
-    -15.3,
-    -14.3,
-    -14,
-    -14.3,
-    -15.3,
-    -16.9,
-    -18.8,
-    -21
+    -21.699,
+    -21.946,
+    -21.931,
+    -20.98,
+    -21.612,
+    -20.045,
+    -18.686,
+    -18.043,
+    -17.204
    ]
   },
   "rainMm": [
@@ -224,84 +212,72 @@
   "id": "pilar-rice",
   "kind": "rice",
   "bounds": [
-   124.27,
-   9.770000000000001,
-   124.33,
-   9.83
+   124.3242,
+   9.8175,
+   124.3264,
+   9.8185
   ],
   "nisar": {
-   "track": 39,
+   "track": 3,
    "dates": [
-    "2026-06-21",
-    "2026-07-03",
-    "2026-07-15",
-    "2026-07-27",
-    "2026-08-08",
-    "2026-08-20",
-    "2026-09-01",
-    "2026-09-13",
-    "2026-09-25",
-    "2026-10-07",
-    "2026-10-19"
+    "2026-06-26",
+    "2026-07-08",
+    "2026-07-20",
+    "2026-08-13",
+    "2026-08-25",
+    "2026-09-06",
+    "2026-09-18",
+    "2026-09-30",
+    "2026-10-12"
    ],
    "images": [
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/pilar-rice-2026-06-26-hh.png",
+     "hv": "targets/pilar-rice-2026-06-26-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/pilar-rice-2026-07-08-hh.png",
+     "hv": "targets/pilar-rice-2026-07-08-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/pilar-rice-2026-07-20-hh.png",
+     "hv": "targets/pilar-rice-2026-07-20-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/pilar-rice-2026-08-13-hh.png",
+     "hv": "targets/pilar-rice-2026-08-13-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/pilar-rice-2026-08-25-hh.png",
+     "hv": "targets/pilar-rice-2026-08-25-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/pilar-rice-2026-09-06-hh.png",
+     "hv": "targets/pilar-rice-2026-09-06-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/pilar-rice-2026-09-18-hh.png",
+     "hv": "targets/pilar-rice-2026-09-18-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/pilar-rice-2026-09-30-hh.png",
+     "hv": "targets/pilar-rice-2026-09-30-hv.png"
     },
     {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
-    },
-    {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
-    },
-    {
-     "hh": "targets/placeholder.png",
-     "hv": "targets/placeholder.png"
+     "hh": "targets/pilar-rice-2026-10-12-hh.png",
+     "hv": "targets/pilar-rice-2026-10-12-hv.png"
     }
    ],
    "meanHvDb": [
-    -20,
-    -18.1,
-    -16.5,
-    -15.1,
-    -14.3,
-    -14,
-    -14.3,
-    -15.1,
-    -16.5,
-    -18.1,
-    -20
+    -20.956,
+    -19.503,
+    -18.936,
+    -17.642,
+    -17.979,
+    -16.925,
+    -15.606,
+    -15.205,
+    -15.214
    ]
   },
   "rainMm": [
