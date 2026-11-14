@@ -1,4 +1,4 @@
-"""Write the town borders (lgus.geojson) and the town list with the 2020 population (lgus.json)."""
+"""Write the town borders (lgus.geojson) and the town list with the 2024 population (lgus.json)."""
 
 import csv
 import json
@@ -13,8 +13,8 @@ RAW = ROOT / "data/lgus"
 # Both sources are pinned to a tag, so a new PSA quarter does not change our files.
 BORDERS = "https://raw.githubusercontent.com/faeldon/philippines-json-maps/v1.1.1/latest/geojson/provdists/medres/municities-provdist-{}.0.01.json"
 PROVINCES = {"Cebu": 702200000, "Bohol": 701200000}
-# PSGC 2Q 2025 is the last PSA publication with the 2020 census. The later ones have the 2024 census.
-PSGC = "https://raw.githubusercontent.com/faeldon/philippines-psgc-shapefiles/v1.0.1/data/psgc/2025-2q/psgc.csv"
+# The PSA PSGC publication of the same quarter as the borders. It has the 2024 census (POPCEN 2024).
+PSGC = "https://raw.githubusercontent.com/faeldon/philippines-psgc-shapefiles/v1.0.1/data/psgc/2026-3q/psgc.csv"
 
 
 def fetch(url):
@@ -61,13 +61,13 @@ def build(borders_by_province, population_by_psgc, windows, existing):
 def main():
     borders = {province: json.loads(fetch(BORDERS.format(code)).read_text(encoding="utf-8")) for province, code in PROVINCES.items()}
     with fetch(PSGC).open(encoding="utf-8-sig", newline="") as file:
-        population = {row["10-digit PSGC"]: int(row["2020 Population"]) for row in csv.DictReader(file) if row["2020 Population"].isdigit()}
+        population = {row["10-digit PSGC"]: int(row["2024 Population"]) for row in csv.DictReader(file) if row["2024 Population"].isdigit()}
     windows = len(json.loads((PUBLIC / "manifest.json").read_text())["windows"])
     existing = {lgu["psgc"]: lgu for lgu in json.loads((PUBLIC / "lgus.json").read_text(encoding="utf-8"))}
     geojson, lgus = build(borders, population, windows, existing)
     (PUBLIC / "lgus.geojson").write_text(json.dumps(geojson, separators=(",", ":"), ensure_ascii=False) + "\n", encoding="utf-8")
     (PUBLIC / "lgus.json").write_text(json.dumps(lgus, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"{len(lgus)} towns, {sum(lgu['population'] for lgu in lgus):,} people in 2020")
+    print(f"{len(lgus)} towns, {sum(lgu['population'] for lgu in lgus):,} people in 2024")
 
 
 if __name__ == "__main__":
