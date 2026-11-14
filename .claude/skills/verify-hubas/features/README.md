@@ -7,7 +7,7 @@ This directory is the maintained source for verifying what a Hubas user can see 
 - Run all commands from `app/`.
 - Start the app with `node scripts/control-hubas.mjs up`. It serves the static export at `http://127.0.0.1:4310`.
 - Run `node scripts/control-hubas.mjs doctor` and require `ok: true`.
-- The town data (`lgus.json`, `lgus.geojson`, `outlook.json`) is still mock data; town IDs start with `mock-`. The Malinao Dam data in `targets.json` is real NISAR data. Get current town IDs with `node scripts/control-hubas.mjs towns`.
+- `lgus.json` and `lgus.geojson` have the 101 real towns (10-digit `psgc`, 2020 population). Their soil water and rank are empty until `pipeline/soil.py` (sc-71) and `rank.py` (sc-120) write them: every town is grey and `Not ranked`. `outlook.json` is still mock data. The Malinao Dam data in `targets.json` is real NISAR data. Get current town IDs with `node scripts/control-hubas.mjs towns`.
 - Never drive a server that this run did not start.
 
 ## Driving conventions

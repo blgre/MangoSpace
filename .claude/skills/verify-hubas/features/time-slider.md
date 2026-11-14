@@ -21,8 +21,8 @@ Preconditions:
 - `public/data/manifest.json` has 11 windows (index 0 to 10) in the mock data.
 
 - **Move the slider.** Set window 10. Run `node scripts/control-hubas.mjs drive --window 10 --name slider-10`. `window.index` is `10` and `window.range` matches the last entry of `manifest.json` `windows` (mock: `2026-10-19 → 2026-10-31`).
-- **Panel follows.** Open a town and move the slider. Run `node scripts/control-hubas.mjs drive --town mock-bogo-city --name slider-bogo-0` and `node scripts/control-hubas.mjs drive --town mock-bogo-city --window 10 --name slider-bogo-10`. `panel["Soil water"]` differs between the two runs and matches `soilMoisture[0]` and `soilMoisture[10]` for that town in `lgus.json`.
-- **No soil water in a window.** Run `node scripts/control-hubas.mjs drive --town mock-cebu-city --window 4 --name slider-cebu-4`. `panel["Soil water"]` is `No good pixels`, because `soilMoisture[4]` is `null` for that town.
+- **Panel follows.** Open a town and move the slider. Run `node scripts/control-hubas.mjs drive --town 0702211000 --name slider-bogo-0` and `node scripts/control-hubas.mjs drive --town 0702211000 --window 10 --name slider-bogo-10`. `panel["Soil water"]` matches `soilMoisture[0]` and `soilMoisture[10]` for that town in `lgus.json`. The two values differ when the data differs; until sc-71 both are `No good pixels`.
+- **No soil water in a window.** Run `node scripts/control-hubas.mjs drive --town 0730600000 --window 4 --name slider-cebu-4`. `panel["Soil water"]` is `No good pixels` when `soilMoisture[4]` is `null` for that town.
 - **Out of range.** Run `node scripts/control-hubas.mjs drive --window 99`. The command fails with `--window must be 0 to 10.`
 
 ## Gotchas

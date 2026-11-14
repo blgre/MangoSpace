@@ -20,18 +20,17 @@ The panel at the top right shows one town: its rank or "Not ranked", its soil wa
 Preconditions:
 
 - `doctor` reports `ok: true`.
-- The mock data has a ranked town (`mock-bogo-city`) and an unranked town (`mock-carmen`).
+- Until `rank.py` (sc-120) runs, every town has `rank: null`. Two towns are named Carmen: `0701212000` in Bohol and `0702215000` in Cebu.
 
-- **Open from the map.** Click Bogo City on the map. Run `node scripts/control-hubas.mjs drive --click-town mock-bogo-city --name panel-map`. `town` is `mock-bogo-city` and `panel.Rank` matches `#<position> of <of>` from `lgus.json`.
-- **Open from the list.** Choose Carmen in the dropdown. Run `node scripts/control-hubas.mjs drive --town "Carmen, Bohol" --name panel-list`. `town` is `mock-carmen` and `panel.Rank` is `Not ranked`.
+- **Open from the map.** Click the City of Bogo on the map. Run `node scripts/control-hubas.mjs drive --click-town 0702211000 --name panel-map`. `town` is `0702211000` and `panel.Rank` matches the town's `rank` in `lgus.json`: `#<position> of <of>`, or `Not ranked` for `null`.
+- **Open from the list.** Choose Carmen in the dropdown. Run `node scripts/control-hubas.mjs drive --town "Carmen, Bohol" --name panel-list`. `town` is `0701212000`, not the Carmen in Cebu.
 - **Values.** In either run, `panel["Soil water"]` equals the town's `soilMoisture` at `window.index`, to 3 decimals, and `panel["Good pixels"]` equals `validShare` × 100, rounded.
 - **Outlook.** `panel` has a key `PAGASA, <province>` whose value contains the `summary`, `advisory` and `issued` of the matching entry in `outlook.json`.
-- **Phone.** Run `node scripts/control-hubas.mjs drive --click-town mock-ubay --viewport 375x812 --name panel-phone`. `town` is `mock-ubay`, and the full-page screenshot shows the panel below the map.
+- **Phone.** Run `node scripts/control-hubas.mjs drive --click-town 0701246000 --viewport 375x812 --name panel-phone`. `town` is `0701246000` (Ubay), and the full-page screenshot shows the panel below the map.
 - **Proof.** Keep `screenshot.png` and `aria.yml` from both runs. The screenshot shows the selected town in the dropdown and the panel values.
 
 ## Gotchas
 
 - Before a town is chosen, the panel shows only the dropdown. `panel` is `null` in the output; that is correct.
 - `--click-town` fails with a clear error if no visible point of the shape is free of the slider and the panel. Use `--town` for that town, and report the map entry point as not reached.
-- With the mock data, a town can show `Soil water: No good pixels` and a non-zero `Good pixels` at the same time (Cebu City, window 4: 63%). That is the mock data, not the panel. Do not report it as a panel bug; check `lgus.json` first.
 - Mock outlook text starts with "Mock text". Do not cite it as PAGASA's real advisory.
