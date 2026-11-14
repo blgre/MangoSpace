@@ -1,0 +1,329 @@
+[
+ {
+  "psgc": "mock-bogo-city",
+  "name": "Bogo City",
+  "province": "Cebu",
+  "population": 88867,
+  "soilMoisture": [
+   0.34,
+   0.332,
+   0.317,
+   0.293,
+   0.268,
+   0.25,
+   0.241,
+   0.235,
+   0.222,
+   0.2,
+   0.175
+  ],
+  "validShare": [
+   0.89,
+   0.88,
+   0.85,
+   0.83,
+   0.84,
+   0.87,
+   0.89,
+   0.88,
+   0.86,
+   0.83,
+   0.83
+  ],
+  "rank": {
+   "position": 1,
+   "of": 7,
+   "stable": true,
+   "parts": {
+    "dryness": 0.24,
+    "dryingSpeed": 1,
+    "people": 0.09
+   }
+  }
+ },
+ {
+  "psgc": "mock-cebu-city",
+  "name": "Cebu City",
+  "province": "Cebu",
+  "population": 964169,
+  "soilMoisture": [
+   0.308,
+   0.3,
+   0.283,
+   0.265,
+   null,
+   0.252,
+   0.253,
+   0.247,
+   0.232,
+   0.214,
+   0.2
+  ],
+  "validShare": [
+   0.64,
+   0.61,
+   0.59,
+   0.6,
+   0.63,
+   0.65,
+   0.64,
+   0.62,
+   0.59,
+   0.59,
+   0.62
+  ],
+  "rank": {
+   "position": 6,
+   "of": 7,
+   "stable": false,
+   "parts": {
+    "dryness": 0.33,
+    "dryingSpeed": 0.56,
+    "people": 1
+   }
+  }
+ },
+ {
+  "psgc": "mock-toledo-city",
+  "name": "Toledo City",
+  "province": "Cebu",
+  "population": 207314,
+  "soilMoisture": [
+   0.369,
+   0.35,
+   0.33,
+   0.317,
+   0.313,
+   0.312,
+   0.304,
+   0.287,
+   0.267,
+   0.251,
+   0.245
+  ],
+  "validShare": [
+   0.8,
+   0.78,
+   0.79,
+   0.82,
+   0.84,
+   0.83,
+   0.81,
+   0.78,
+   0.78,
+   0.81,
+   0.84
+  ],
+  "rank": {
+   "position": 4,
+   "of": 7,
+   "stable": false,
+   "parts": {
+    "dryness": 0.2,
+    "dryingSpeed": 0.69,
+    "people": 0.22
+   }
+  }
+ },
+ {
+  "psgc": "mock-argao",
+  "name": "Argao",
+  "province": "Cebu",
+  "population": 78187,
+  "soilMoisture": [
+   0.381,
+   0.365,
+   0.356,
+   0.356,
+   0.359,
+   0.355,
+   0.342,
+   0.326,
+   0.314,
+   0.312,
+   0.314
+  ],
+  "validShare": [
+   0.87,
+   0.88,
+   0.91,
+   0.93,
+   0.92,
+   0.9,
+   0.87,
+   0.87,
+   0.9,
+   0.93,
+   0.93
+  ],
+  "rank": {
+   "position": 7,
+   "of": 7,
+   "stable": false,
+   "parts": {
+    "dryness": 0.16,
+    "dryingSpeed": 0.44,
+    "people": 0.08
+   }
+  }
+ },
+ {
+  "psgc": "mock-tagbilaran-city",
+  "name": "Tagbilaran City",
+  "province": "Bohol",
+  "population": 104976,
+  "soilMoisture": [
+   0.322,
+   0.31,
+   0.307,
+   0.307,
+   0.3,
+   0.284,
+   0.265,
+   0.25,
+   0.245,
+   0.244,
+   0.24
+  ],
+  "validShare": [
+   0.68,
+   0.71,
+   0.73,
+   0.72,
+   0.7,
+   0.67,
+   0.67,
+   0.7,
+   0.73,
+   0.73,
+   0.7
+  ],
+  "rank": {
+   "position": 5,
+   "of": 7,
+   "stable": false,
+   "parts": {
+    "dryness": 0.27,
+    "dryingSpeed": 0.63,
+    "people": 0.11
+   }
+  }
+ },
+ {
+  "psgc": "mock-ubay",
+  "name": "Ubay",
+  "province": "Bohol",
+  "population": 81799,
+  "soilMoisture": [
+   0.39,
+   0.383,
+   0.379,
+   0.368,
+   0.348,
+   0.325,
+   0.306,
+   0.297,
+   0.292,
+   0.284,
+   0.267
+  ],
+  "validShare": [
+   0.94,
+   0.96,
+   0.95,
+   0.93,
+   0.9,
+   0.9,
+   0.93,
+   0.96,
+   0.96,
+   0.93,
+   0.91
+  ],
+  "rank": {
+   "position": 2,
+   "of": 7,
+   "stable": true,
+   "parts": {
+    "dryness": 0.11,
+    "dryingSpeed": 0.88,
+    "people": 0.08
+   }
+  }
+ },
+ {
+  "psgc": "mock-pilar",
+  "name": "Pilar",
+  "province": "Bohol",
+  "population": 28693,
+  "soilMoisture": [
+   0.407,
+   0.405,
+   0.396,
+   0.378,
+   0.357,
+   0.34,
+   0.333,
+   0.33,
+   0.324,
+   0.309,
+   0.287
+  ],
+  "validShare": [
+   0.98,
+   0.97,
+   0.95,
+   0.92,
+   0.92,
+   0.95,
+   0.98,
+   0.98,
+   0.95,
+   0.93,
+   0.92
+  ],
+  "rank": {
+   "position": 3,
+   "of": 7,
+   "stable": true,
+   "parts": {
+    "dryness": 0.09,
+    "dryingSpeed": 0.75,
+    "people": 0.03
+   }
+  }
+ },
+ {
+  "psgc": "mock-carmen",
+  "name": "Carmen",
+  "province": "Bohol",
+  "population": 49191,
+  "soilMoisture": [
+   0.377,
+   0.372,
+   0.358,
+   0.341,
+   0.328,
+   0.325,
+   0.326,
+   0.324,
+   0.313,
+   0.295,
+   0.28
+  ],
+  "validShare": [
+   0.33,
+   0.31,
+   0.28,
+   0.28,
+   0.31,
+   0.34,
+   0.34,
+   0.31,
+   0.29,
+   0.28,
+   0.3
+  ],
+  "rank": null
+ }
+]

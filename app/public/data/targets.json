@@ -1,0 +1,333 @@
+[
+ {
+  "id": "malinao-dam",
+  "kind": "reservoir",
+  "bounds": [
+   124.3,
+   9.83,
+   124.36,
+   9.889999999999999
+  ],
+  "nisar": {
+   "track": 3,
+   "dates": [
+    "2026-06-21",
+    "2026-07-03",
+    "2026-07-15",
+    "2026-07-27",
+    "2026-08-08",
+    "2026-08-20",
+    "2026-09-01",
+    "2026-09-13",
+    "2026-09-25",
+    "2026-10-07",
+    "2026-10-19"
+   ],
+   "images": [
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    }
+   ],
+   "waterAreaKm2": [
+    1.4,
+    1.36,
+    1.33,
+    1.29,
+    1.26,
+    1.22,
+    1.19,
+    1.15,
+    1.12,
+    1.08,
+    1.05
+   ]
+  },
+  "rainMm": [
+   140,
+   141,
+   133,
+   115,
+   95,
+   83,
+   83,
+   85,
+   80,
+   64,
+   43
+  ],
+  "history": [
+   {
+    "sensor": "Sentinel-1",
+    "event": "2015–16",
+    "dates": [
+     "2015-10-10",
+     "2016-01-14",
+     "2016-05-13"
+    ],
+    "waterAreaKm2": [
+     1.31,
+     1.02,
+     0.61
+    ],
+    "images": [
+     "targets/placeholder.png",
+     "targets/placeholder.png",
+     "targets/placeholder.png"
+    ]
+   }
+  ],
+  "scenarios": [
+   {
+    "label": "If 2015–16 repeats",
+    "basedOn": "2015–16",
+    "months": [
+     "2026-11",
+     "2027-02",
+     "2027-05"
+    ],
+    "waterAreaKm2": [
+     1.05,
+     0.82,
+     0.49
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ubay-rice",
+  "kind": "rice",
+  "bounds": [
+   124.44,
+   10.030000000000001,
+   124.5,
+   10.09
+  ],
+  "nisar": {
+   "track": 39,
+   "dates": [
+    "2026-06-21",
+    "2026-07-03",
+    "2026-07-15",
+    "2026-07-27",
+    "2026-08-08",
+    "2026-08-20",
+    "2026-09-01",
+    "2026-09-13",
+    "2026-09-25",
+    "2026-10-07",
+    "2026-10-19"
+   ],
+   "images": [
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    }
+   ],
+   "meanHvDb": [
+    -21,
+    -18.8,
+    -16.9,
+    -15.3,
+    -14.3,
+    -14,
+    -14.3,
+    -15.3,
+    -16.9,
+    -18.8,
+    -21
+   ]
+  },
+  "rainMm": [
+   140,
+   141,
+   133,
+   115,
+   95,
+   83,
+   83,
+   85,
+   80,
+   64,
+   43
+  ]
+ },
+ {
+  "id": "pilar-rice",
+  "kind": "rice",
+  "bounds": [
+   124.27,
+   9.770000000000001,
+   124.33,
+   9.83
+  ],
+  "nisar": {
+   "track": 39,
+   "dates": [
+    "2026-06-21",
+    "2026-07-03",
+    "2026-07-15",
+    "2026-07-27",
+    "2026-08-08",
+    "2026-08-20",
+    "2026-09-01",
+    "2026-09-13",
+    "2026-09-25",
+    "2026-10-07",
+    "2026-10-19"
+   ],
+   "images": [
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    },
+    {
+     "hh": "targets/placeholder.png",
+     "hv": "targets/placeholder.png"
+    }
+   ],
+   "meanHvDb": [
+    -20,
+    -18.1,
+    -16.5,
+    -15.1,
+    -14.3,
+    -14,
+    -14.3,
+    -15.1,
+    -16.5,
+    -18.1,
+    -20
+   ]
+  },
+  "rainMm": [
+   140,
+   141,
+   133,
+   115,
+   95,
+   83,
+   83,
+   85,
+   80,
+   64,
+   43
+  ]
+ }
+]

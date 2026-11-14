@@ -1,0 +1,14 @@
+[
+ {
+  "province": "Cebu",
+  "advisory": "MOCK advisory",
+  "issued": "2026-11-01",
+  "summary": "Mock text. Less rain than normal, Dec–May."
+ },
+ {
+  "province": "Bohol",
+  "advisory": "MOCK advisory",
+  "issued": "2026-11-01",
+  "summary": "Mock text. Less rain than normal, Dec–May."
+ }
+]
