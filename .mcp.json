@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "shortcut": {
+      "type": "http",
+      "url": "https://mcp.shortcut.com/mcp"
+    }
+  }
+}
