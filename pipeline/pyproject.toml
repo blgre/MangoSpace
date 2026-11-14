@@ -1,0 +1,13 @@
+[project]
+name = "hubas-pipeline"
+version = "0.1.0"
+description = "Reads NASA radar files one time. Writes small images and JSON into app/public/data."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "earthaccess",
+    "asf_search",
+    "hyp3_sdk",
+    "h5py",
+    "rasterio",
+    "geopandas",
+]

@@ -1,1 +1,6 @@
 .orca
+
+# pipeline: raw NASA downloads stay out of git
+pipeline/data/
+.venv/
+__pycache__/

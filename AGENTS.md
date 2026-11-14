@@ -1,7 +1,15 @@
 # MangoSpace
 
 NASA Space Apps 2026 submission for [Dancing with the SARs](https://www.spaceappschallenge.org/2026/challenges/dancing-with-the-sars/).
-Status: planning. No stack chosen yet.
+Status: building. Plan: https://claude.ai/artifact/RnQvBADeQY7pRJLrBH8YR8
+
+## Stack
+
+- `app/`: Next.js (static export, no server), TypeScript, MapLibre GL JS, SVG charts, Web Audio. Deploys to Vercel.
+- `pipeline/`: Python 3.12 with uv. Runs offline. Writes JSON and PNG files into `app/public/data`.
+- `app/lib/data.ts` is the data contract between the two. Only the tech lead changes it.
+- The app reads only `app/public/data`. Do not call NASA services from the browser.
+- Checks before a PR: `cd app && npm run lint && npm run build && npm test`.
 
 ## Tools
 

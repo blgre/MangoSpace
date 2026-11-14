@@ -1,0 +1,105 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { Map as MapLibreMap, setWorkerUrl } from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
+import type { Lgu, Manifest, Outlook } from "../../lib/data";
+
+declare global {
+  interface Window { hubasMap?: MapLibreMap }
+}
+
+const SOURCE = "lgus";
+
+// MapLibre 6 looks for its worker next to its own module. The bundler moves the module, so point at the worker file.
+setWorkerUrl(new URL("maplibre-gl/dist/maplibre-gl-worker.mjs", import.meta.url).href);
+
+export default function Explorer({ manifest, lgus, outlooks }: { manifest: Manifest; lgus: Lgu[]; outlooks: Outlook[] }) {
+  const container = useRef<HTMLDivElement>(null);
+  const [map, setMap] = useState<MapLibreMap | null>(null);
+  const [windowIndex, setWindowIndex] = useState(0);
+  const [psgc, setPsgc] = useState("");
+
+  useEffect(() => {
+    const m = new MapLibreMap({
+      container: container.current!,
+      style: "https://tiles.openfreemap.org/styles/positron",
+      bounds: manifest.bounds,
+    });
+    m.on("load", () => {
+      m.addSource(SOURCE, { type: "geojson", data: "/data/lgus.geojson", promoteId: "psgc" });
+      m.addLayer({
+        id: "soil",
+        type: "fill",
+        source: SOURCE,
+        paint: {
+          "fill-opacity": 0.8,
+          "fill-outline-color": "#12201d",
+          "fill-color": [
+            "case",
+            ["==", ["feature-state", "sm"], null],
+            "#9aa5a2",
+            ["interpolate", ["linear"], ["feature-state", "sm"], 0.1, "#b07a1f", 0.25, "#c8c48a", 0.45, "#0d6f7d"],
+          ],
+        },
+      });
+      m.on("click", "soil", (e) => setPsgc(String(e.features?.[0]?.id ?? "")));
+      setMap(m);
+    });
+    window.hubasMap = m; // the Playwright specs use this to find towns on the canvas
+    return () => m.remove();
+  }, [manifest.bounds]);
+
+  useEffect(() => {
+    if (!map) return;
+    for (const lgu of lgus) map.setFeatureState({ source: SOURCE, id: lgu.psgc }, { sm: lgu.soilMoisture[windowIndex] });
+  }, [map, lgus, windowIndex]);
+
+  const win = manifest.windows[windowIndex];
+  const lgu = lgus.find((l) => l.psgc === psgc);
+  const outlook = outlooks.find((o) => o.province === lgu?.province);
+  const moisture = lgu?.soilMoisture[windowIndex];
+
+  return (
+    <main>
+      <div ref={container} className="map" data-ready={map ? "true" : "false"} />
+      <p className="tag">Cebu + Bohol · 12-day window · {manifest.sme2Status}</p>
+
+      <form className="slider" onSubmit={(e) => e.preventDefault()}>
+        <label htmlFor="window">
+          Window <output htmlFor="window">{win.start} → {win.end}</output>
+        </label>
+        <input
+          id="window"
+          type="range"
+          min={0}
+          max={manifest.windows.length - 1}
+          value={windowIndex}
+          onChange={(e) => setWindowIndex(Number(e.target.value))}
+        />
+      </form>
+
+      <aside className="panel">
+        <label htmlFor="town">Town</label>
+        <select id="town" value={psgc} onChange={(e) => setPsgc(e.target.value)}>
+          <option value="">Select a town</option>
+          {lgus.map((l) => (
+            <option key={l.psgc} value={l.psgc}>{l.name}, {l.province}</option>
+          ))}
+        </select>
+        {lgu && (
+          <dl>
+            <dt>Rank</dt>
+            <dd data-testid="rank">{lgu.rank ? `#${lgu.rank.position} of ${lgu.rank.of}` : "Not ranked"}</dd>
+            <dt>Soil water</dt>
+            <dd data-testid="moisture">{moisture == null ? "No good pixels" : `${moisture.toFixed(3)} m³/m³`}</dd>
+            <dt>Good pixels</dt>
+            <dd>{Math.round(lgu.validShare[windowIndex] * 100)}%</dd>
+            <dt>PAGASA, {lgu.province}</dt>
+            <dd>{outlook ? `${outlook.summary} (${outlook.advisory}, ${outlook.issued})` : "No outlook"}</dd>
+          </dl>
+        )}
+      </aside>
+    </main>
+  );
+}
