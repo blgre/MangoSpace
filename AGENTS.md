@@ -67,7 +67,7 @@ Setup order:
 
 1. Build a web app, so Playwright can drive it.
 2. Once the first screen runs: `npm init playwright@latest` and one smoke spec (app loads, no console errors). Add one command that starts the dev server and seeds sample data.
-3. Right after: `/pstack:create-verification-skill`. It wraps the Playwright flows into a control skill and builds the Feature Map.
+3. Right after: `/pstack:create-verification-skill`. It wraps the Playwright flows into a control skill and builds the Feature Map. Done: the skill is `verify-hubas` (`.claude/skills/verify-hubas/`), and its control tool is `cd app && npm run control -- help`.
 4. After each batch of features: `/pstack:maintain-verification-skill`.
 
 Upkeep:
