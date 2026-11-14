@@ -49,5 +49,30 @@ the median of all dates. The comments in `targets.py` say how the limits were
 selected and what the count leaves out. The command needs the same Earthdata
 Login as the download.
 
+## Town borders and population
+
+```sh
+uv run python lgus.py
+```
+
+The command writes the 101 towns and cities of Cebu and Bohol into
+`app/public/data/lgus.geojson` (borders) and `lgus.json` (name, province, 2020
+population). It needs no login. It keeps the raw files in the ignored
+`pipeline/data/lgus/` directory.
+
+A town that is already in `lgus.json` keeps its `soilMoisture`, `validShare` and
+`rank`. A new town gets `null` soil water, a `validShare` of 0 and no rank, until
+`soil.py` and `rank.py` write them.
+
+Sources, each pinned to a release tag:
+
+- Borders: NAMRIA and PSA, through [OCHA COD-AB](https://data.humdata.org/dataset/cod-ab-phl)
+  (CC BY-IGO), with PSGC 3Q 2026 codes, from
+  [philippines-json-maps](https://github.com/faeldon/philippines-json-maps) v1.1.1, at 1% of the vertices.
+- Population: the 2020 Census of Population and Housing, from the PSA PSGC 2Q 2025
+  publication, as extracted in
+  [philippines-psgc-shapefiles](https://github.com/faeldon/philippines-psgc-shapefiles) v1.0.1.
+  The later PSGC publications have the 2024 census.
+
 References: [ASF collection names](https://nisar-docs.asf.alaska.edu/earthaccess/)
 and [earthaccess downloads](https://earthaccess.readthedocs.io/en/latest/user/howto/download-to-local-machine/).
